@@ -22,6 +22,6 @@ This is a ecommerce React app. Template: symu.co
 
 ## Demo
 
-https://(link to app)
+https://condescending-goldberg-c1ce21.netlify.app/
 
 ![project image](https://i.imgur.com/VbetyWU.png)
