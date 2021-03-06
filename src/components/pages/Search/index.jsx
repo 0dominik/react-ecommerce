@@ -24,7 +24,6 @@ export const Search = () => {
     variables: { query: debouncedQuery },
     skip: skip,
     onCompleted: (data) => {
-      console.log('data', data);
       setProducts(data.products);
     },
   });

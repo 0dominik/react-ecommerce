@@ -1,15 +1,14 @@
 import React from 'react';
-import { StyledSidebar, Logo, IconsContainer, IconLink } from './style';
+import { StyledNavigation, Logo, IconsContainer, IconLink } from './style';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faShoppingCart, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { useLocation } from 'react-router-dom';
 
-export const Sidebar = () => {
+export const Navigation = () => {
   const { pathname } = useLocation();
-  console.log(pathname);
 
   return (
-    <StyledSidebar>
+    <StyledNavigation>
       <IconLink to='/'>
         <Logo src='/img/logo.png' alt='logo' />
       </IconLink>
@@ -27,6 +26,6 @@ export const Sidebar = () => {
           <span className='visually-hidden'>Search</span>
         </IconLink>
       </IconsContainer>
-    </StyledSidebar>
+    </StyledNavigation>
   );
 };

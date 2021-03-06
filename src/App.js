@@ -1,6 +1,7 @@
+import React from 'react';
 import { GlobalStyle } from './theme/globalStyles';
 import { PrivateRoute } from './components/atoms/PrivateRoute';
-import { Sidebar } from './components/organisms/Sidebar';
+import { Navigation } from './components/organisms/Navigation';
 import { Menu } from './components/organisms/Menu';
 import { Home } from './components/pages/Home';
 import { Products } from './components/pages/Products';
@@ -26,7 +27,7 @@ export const App = () => {
         <Route component={NotFound} />
       </Switch>
       <GlobalStyle />
-      <Sidebar />
+      <Navigation />
       <Menu />
     </Router>
   );

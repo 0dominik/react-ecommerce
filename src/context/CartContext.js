@@ -19,10 +19,10 @@ export const CartProvider = ({ children }) => {
       firestore
         .collection(currentUser.uid)
         .get()
-        .then((res) => {
+        .then((products) => {
           dispatch({
             type: actions.SET_INITAL,
-            product: res.docs.map((doc) => doc.data()),
+            product: products.docs.map((doc) => doc.data()),
           });
         });
     }

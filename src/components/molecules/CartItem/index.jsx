@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Container, Img, Name, Price, Label, QuantityContainer, PriceContainer } from './style';
 import { Button } from '../../atoms/Button';
 import { QuantityInput } from '../../atoms/QuantityInput';
-import { ProductLink } from '../../../components/atoms/ProductLink';
+import { ProductLink } from '../../atoms/ProductLink';
 import { useCart } from '../../../context/CartContext';
 import { firestore } from '../../../firebase/firebase';
 import { useAuth } from '../../../context/AuthContext';
@@ -27,16 +27,17 @@ export const CartItem = ({ product, setError }) => {
 
   const handleSetProduct = () => {
     if (currentUser) {
-      firestore
-        .collection(currentUser.uid)
-        .doc(product.slug)
-        .set({ ...product, quantity });
-    }
+      const newProduct = { ...product, quantity: parseInt(quantity) };
 
-    dispatch({
-      type: actions.SET_PRODUCT,
-      product: { ...product, quantity },
-    });
+      firestore.collection(currentUser.uid).doc(product.slug).set(newProduct);
+      dispatch({
+        type: actions.SET_PRODUCT,
+        product: newProduct,
+      });
+      setError('');
+    } else {
+      setError('Failed to set product');
+    }
   };
 
   const handleDeleteProduct = () => {

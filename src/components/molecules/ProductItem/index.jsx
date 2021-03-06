@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Name, Price, Description, Img, Title } from './style';
-import { ProductLink } from '../../../components/atoms/ProductLink';
+import { ProductLink } from '../../atoms/ProductLink';
 
 export const ProductItem = ({ product, margin }) => {
   return (

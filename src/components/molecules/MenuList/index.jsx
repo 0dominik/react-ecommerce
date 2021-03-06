@@ -15,14 +15,14 @@ export const MenuList = () => {
 
   return (
     <StyledUl>
-      <li key='all'>
-        <StyledLink to={'/products/all'} $isActive={`/products/all` === pathname}>
+      <li>
+        <StyledLink to='/products/all' $isActive={pathname === `/products/all`}>
           all categories
         </StyledLink>
       </li>
       {categories.map(({ name, slug }) => (
         <li key={name}>
-          <StyledLink to={`/products/${slug}`} $isActive={`/products/${slug}` === pathname}>
+          <StyledLink to={`/products/${slug}`} $isActive={pathname === `/products/${slug}`}>
             {name}
           </StyledLink>
         </li>

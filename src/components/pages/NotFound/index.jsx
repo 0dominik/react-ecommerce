@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container } from './style';
-import { Alert } from '../../../components/atoms/Alert';
+import { Alert } from '../../atoms/Alert';
 
 export const NotFound = () => {
   return (

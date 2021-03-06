@@ -17,7 +17,9 @@ export const Menu = () => {
     try {
       await logout();
       history.push('/login');
-    } catch {}
+    } catch {
+      alert('Failed to log out');
+    }
   };
 
   return (

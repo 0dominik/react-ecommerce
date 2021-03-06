@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-export const StyledSidebar = styled.nav`
+export const StyledNavigation = styled.nav`
   width: 75px;
   height: 100%;
   display: flex;
@@ -19,7 +19,8 @@ export const StyledSidebar = styled.nav`
     height: 75px;
     flex-direction: row;
     padding-top: 0;
-    padding-left: 25px;
+    padding-left: 5px;
+    z-index: 5;
   }
 `;
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from '../../../components/atoms/Button';
+import { Button } from '../../atoms/Button';
 import { Container, Title, Subtitle, ShadowText } from './style';
 import { Link } from 'react-router-dom';
 

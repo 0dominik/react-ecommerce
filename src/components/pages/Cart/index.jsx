@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { Container, CartList } from './style';
 import { Heading } from '../../atoms/Heading';
-import { CartItem } from '../../molecules/CartItem';
+import { Alert } from '../../atoms/Alert';
 import { Button } from '../../atoms/Button';
-import { useCart } from '../../../context/CartContext';
-import { actions } from '../../../utils/actions';
+import { CartItem } from '../../molecules/CartItem';
 import { firestore } from '../../../firebase/firebase';
 import { useAuth } from '../../../context/AuthContext';
+import { useCart } from '../../../context/CartContext';
+import { actions } from '../../../utils/actions';
 import { useTitle } from '../../../hooks/useTitle';
 
 export const Cart = () => {
@@ -16,13 +17,15 @@ export const Cart = () => {
   const { currentUser } = useAuth();
 
   const handleDeleteAll = () => {
-    cart.forEach((el) => {
-      firestore.collection(currentUser.uid).doc(el.slug).delete();
-    });
+    if (currentUser) {
+      cart.forEach((el) => {
+        firestore.collection(currentUser.uid).doc(el.slug).delete();
+      });
 
-    dispatch({
-      type: actions.DELETE_ALL,
-    });
+      dispatch({
+        type: actions.DELETE_ALL,
+      });
+    }
   };
 
   return (
@@ -39,7 +42,7 @@ export const Cart = () => {
           clear cart
         </Button>
       )}
-      {error}
+      {error && <Alert type='error'>{error}</Alert>}
     </Container>
   );
 };
