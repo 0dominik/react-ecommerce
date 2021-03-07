@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
+export const Container = styled.section`
   display: flex;
   align-items: flex-start;
   margin-bottom: 10px;

@@ -41,7 +41,7 @@ export const ProductInfo = ({ product, loading }) => {
         type: actions.ADD_PRODUCT,
         product: newProduct,
       });
-      setMessage('Product successfully added');
+      setMessage('Product successfully added to cart');
     } else {
       setError(`You have to log in to add product to cart.`);
     }

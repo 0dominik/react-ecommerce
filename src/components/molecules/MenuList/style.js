@@ -9,9 +9,6 @@ export const StyledUl = styled.ul`
 
   li {
     margin: 20px 0;
-
-    a {
-    }
   }
 `;
 

@@ -6,7 +6,7 @@ const httpLink = createHttpLink({
 });
 
 const authLink = setContext((_, { headers }) => {
-  const token = process.env.REACT_APP_AUTH_TOKEN;
+  const token = process.env.REACT_APP_API_AUTH_TOKEN;
 
   return {
     headers: {

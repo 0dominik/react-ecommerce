@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyledUl, StyledLink } from './style';
+import { Alert } from '../../atoms/Alert';
 import { useLocation } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { GET_CATEGORIES } from '../../../graphql/queries';
@@ -10,7 +11,7 @@ export const MenuList = () => {
   const { data: { categories = [] } = {}, error } = useQuery(GET_CATEGORIES);
 
   if (error) {
-    return <p>Failed to get categories</p>;
+    return <Alert type='error'>Failed to get categories</Alert>;
   }
 
   return (

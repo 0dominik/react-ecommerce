@@ -11,13 +11,13 @@ import { round } from '../../../utils/helpers';
 
 export const CartItem = ({ product, setError }) => {
   const [cart, dispatch] = useCart();
-  const [quantity, setQuantity] = useState(cart.find((currentProduct) => currentProduct.slug === product.slug)?.quantity || 1);
+  const [quantity, setQuantity] = useState(product.quantity);
   const { currentUser } = useAuth();
 
   const handleQuantity = (e) => {
     const { value } = e.target;
 
-    if (parseInt(value) > 0 && value[0] !== '0') {
+    if (parseInt(value) > 0) {
       setQuantity(value);
       setError('');
     } else {
@@ -41,12 +41,14 @@ export const CartItem = ({ product, setError }) => {
   };
 
   const handleDeleteProduct = () => {
-    firestore.collection(currentUser.uid).doc(product.slug).delete();
+    if (currentUser) {
+      firestore.collection(currentUser.uid).doc(product.slug).delete();
 
-    dispatch({
-      type: actions.DELETE_PRODUCT,
-      product,
-    });
+      dispatch({
+        type: actions.DELETE_PRODUCT,
+        product,
+      });
+    }
   };
 
   return (

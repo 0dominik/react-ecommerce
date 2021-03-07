@@ -30,6 +30,7 @@ export const IconLink = styled(Link)`
   color: ${({ theme, $isActive }) => ($isActive ? theme.colors.primary : theme.colors.lightGray)};
   transition: 0.15s;
   cursor: pointer;
+  position: relative;
 
   &:hover,
   &:focus {
@@ -61,4 +62,18 @@ export const IconsContainer = styled.div`
     align-items: center;
     margin-top: 0;
   }
+`;
+
+export const CartCounter = styled.span`
+  width: 18px;
+  height: 18px;
+  line-height: 18px;
+  background-color: ${({ theme }) => theme.colors.error};
+  position: absolute;
+  right: -10px;
+  top: -5px;
+  font-size: 1.6rem;
+  color: ${({ theme }) => theme.colors.white};
+  text-align: center;
+  border-radius: 50%;
 `;

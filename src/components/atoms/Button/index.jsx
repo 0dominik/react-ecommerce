@@ -19,6 +19,6 @@ export const Button = styled.button`
 
   &:hover,
   &:focus {
-    background-color: ${({ theme, disabled }) => !disabled && theme.colors.darkprimary};
+    background-color: ${({ theme, disabled }) => !disabled && theme.colors.darkPrimary};
   }
 `;

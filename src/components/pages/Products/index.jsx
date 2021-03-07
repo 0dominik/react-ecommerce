@@ -19,7 +19,7 @@ export const Products = () => {
   const [pageNumber, setPageNumber] = useState(1);
   const theme = useTheme();
 
-  const startVariables = {
+  const initialVariables = {
     category: category !== 'all' ? category : undefined,
     orderBy: undefined,
     skip: 0,
@@ -27,18 +27,18 @@ export const Products = () => {
     maxPrice: 1000,
   };
 
-  const [variables, setVariables] = useState(startVariables);
+  const [variables, setVariables] = useState(initialVariables);
   const [getProducts, { data: { products = [] } = {}, loading }] = useLazyQuery(GET_PRODUCTS, {
-    variables: startVariables,
+    variables: initialVariables,
   });
 
   useEffect(() => {
     window.scrollTo(0, 0);
     setPageNumber(1);
     getProducts({
-      variables: startVariables,
+      variables: initialVariables,
     });
-    setVariables(startVariables);
+    setVariables(initialVariables);
   }, [category]);
 
   useEffect(() => {

@@ -31,18 +31,26 @@ export const Cart = () => {
   return (
     <Container>
       <Heading>Cart</Heading>
-      {!cart.length && 'is empty'}
       <CartList>
         {cart.map((product) => (
           <CartItem key={product.slug} product={product} setError={setError} />
         ))}
       </CartList>
       {cart.length > 0 && (
-        <Button size='s' onClick={handleDeleteAll} mt={20}>
+        <p>
+          Total cart value: $
+          {cart.reduce((acc, obj) => {
+            return acc + obj.price * obj.quantity;
+          }, 0)}
+        </p>
+      )}
+      {cart.length > 0 && (
+        <Button size='s' onClick={handleDeleteAll} mt={15}>
           clear cart
         </Button>
       )}
       {error && <Alert type='error'>{error}</Alert>}
+      {!cart.length && <Alert type='info'>No products found</Alert>}
     </Container>
   );
 };

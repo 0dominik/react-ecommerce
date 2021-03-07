@@ -36,16 +36,12 @@ export const Menu = () => {
           </ButtonsContainer>
         ) : (
           <ButtonsContainer>
-            <Link as={Button} size='s' type='button' to='/login'>
-              <Button size='s' type='button'>
-                log in
-              </Button>
-            </Link>
-            <Link as={Button} size='s' type='button' to='/register'>
-              <Button size='s' type='button' mt={5}>
-                register
-              </Button>
-            </Link>
+            <Button onClick={() => history.push('/login')} size='s' type='button'>
+              log in
+            </Button>
+            <Button onClick={() => history.push('/register')} size='s' type='button' mt={5}>
+              register
+            </Button>
           </ButtonsContainer>
         )}
       </Nav>

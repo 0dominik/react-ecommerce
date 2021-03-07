@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
+export const Container = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -13,7 +13,7 @@ export const Container = styled.div`
   }
 `;
 
-export const Results = styled.div`
+export const Results = styled.section`
   max-width: 850px;
   width: 95vw;
   display: flex;

@@ -1,16 +1,16 @@
 import styled from 'styled-components';
 
 export const Alert = styled.p`
-  ${({ type }) => {
+  ${({ type, theme }) => {
     if (type === 'info') {
-      return `background-color: #fbff00;
+      return `background-color: ${theme.colors.info};
               color: #000000;`;
     } else if (type === 'error') {
-      return `background-color: #c71313;
+      return `background-color: ${theme.colors.error};
               color: #ffffff;`;
     } else if (type === 'success') {
-      return `background-color: #62d614;
-              color: #ffffff;`;
+      return `background-color: ${theme.colors.success};
+              color: #000000;`;
     } else {
       return `background-color: transparent;
               color: #000000;`;
