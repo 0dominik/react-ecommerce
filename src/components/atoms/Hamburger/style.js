@@ -38,7 +38,7 @@ export const StyledHamburger = styled.button`
   }
 
   .bar {
-    opacity: ${({ isOpen }) => (isOpen ? '0' : 'null')};
+    opacity: ${({ isOpen }) => isOpen && 0};
   }
 
   &:after {

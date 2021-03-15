@@ -19,4 +19,5 @@ export const theme = {
     medium: '900px',
     large: '1200px',
   },
+  loaderSize: 20,
 };

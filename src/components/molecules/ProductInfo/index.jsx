@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from '../../atoms/Button';
 import { Alert } from '../../atoms/Alert';
-import { QuantityInput } from '../../atoms/QuantityInput';
-import { Container, Name, Description, Price, QuantityContainer, SubContainer, Label } from './style';
+import { Price } from '../../atoms/Price';
+import { Quantity } from '../Quantity';
+import { Container, Name, Description, SubContainer, PriceContainer, QuantityContainer } from './style';
 import { Link } from 'react-router-dom';
 import { useCart } from '../../../context/CartContext';
 import { useAuth } from '../../../context/AuthContext';
@@ -15,16 +16,25 @@ export const ProductInfo = ({ product, loading }) => {
   const [message, setMessage] = useState('');
   const [cart, dispatch] = useCart();
   const { currentUser } = useAuth();
+  const [isInCart, setIsInCart] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
     setMessage('');
     setError('');
-
-    if (!loading && product) {
-      setQuantity(cart.find((cartProduct) => product.slug === cartProduct.slug)?.quantity || 1);
-    }
   }, [product]);
+
+  useEffect(() => {
+    const item = cart.find((cartProduct) => product.slug === cartProduct.slug);
+
+    if (!loading && product && item) {
+      setQuantity(item.quantity);
+      setIsInCart(true);
+    } else {
+      setQuantity(1);
+      setIsInCart(false);
+    }
+  }, [product, cart]);
 
   const addProduct = () => {
     if (currentUser && !product.isSold) {
@@ -43,14 +53,7 @@ export const ProductInfo = ({ product, loading }) => {
       });
       setMessage('Product successfully added to cart');
     } else {
-      setError(`You have to log in to add product to cart.`);
-    }
-  };
-
-  const handleQuantity = (e) => {
-    const { value } = e.target;
-    if (parseInt(value) > 0 && value[0] !== '0') {
-      setQuantity(value);
+      setError('You have to log in to add product to cart.');
     }
   };
 
@@ -60,19 +63,16 @@ export const ProductInfo = ({ product, loading }) => {
         {product.isSold && '[SOLD] '}
         <span className='hl'>{product.name}</span> - {product.category.name}
       </Name>
-      <Description>{product.description}, Lorem ipsum dolor sit, amet consectetur adipisicing elit. Exercitationem commodi tempora voluptatibus veniam</Description>
+      <Description>{product.description} Lorem ipsum dolor sit, amet consectetur adipisicing elit. Exercitationem commodi tempora voluptatibus veniam</Description>
       <SubContainer>
-        <Label>
+        <PriceContainer>
           cost
-          <Price>${product.price}</Price>
-        </Label>
+          <Price size='l'>${product.price}</Price>
+        </PriceContainer>
         <QuantityContainer>
-          <Label htmlFor='quantity'>
-            quantity
-            <QuantityInput min='1' type='number' id='quantity' value={quantity} onChange={handleQuantity} />
-          </Label>
-          <Button type='submit' onClick={addProduct} mt={-20} disabled={product.isSold}>
-            add to cart
+          <Quantity quantity={quantity} setQuantity={setQuantity} />
+          <Button type='submit' onClick={addProduct} ml={20} disabled={product.isSold}>
+            {isInCart ? 'change quantity' : 'add to cart'}
           </Button>
         </QuantityContainer>
       </SubContainer>

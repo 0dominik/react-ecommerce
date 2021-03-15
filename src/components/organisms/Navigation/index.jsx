@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyledNavigation, Logo, IconsContainer, IconLink, CartCounter } from './style';
+import { Container, Logo, IconsContainer, IconLink, CartCounter } from './style';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faShoppingCart, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { useLocation } from 'react-router-dom';
@@ -12,9 +12,9 @@ export const Navigation = () => {
   const { currentUser } = useAuth();
 
   return (
-    <StyledNavigation>
+    <Container>
       <IconLink to='/'>
-        <Logo src='/img/logo.png' alt='logo' />
+        <Logo src='/img/logo.png' alt='round, blue logo' />
       </IconLink>
       <IconsContainer>
         <IconLink to='/' $isActive={pathname === '/'}>
@@ -31,6 +31,6 @@ export const Navigation = () => {
           <span className='visually-hidden'>Search</span>
         </IconLink>
       </IconsContainer>
-    </StyledNavigation>
+    </Container>
   );
 };

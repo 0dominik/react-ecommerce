@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { Container, Img, Name, Price, Label, QuantityContainer, PriceContainer } from './style';
+import { Container, Img, Name, ButttonsContainer, PriceContainer, SubContainer } from './style';
 import { Button } from '../../atoms/Button';
-import { QuantityInput } from '../../atoms/QuantityInput';
+import { Price } from '../../atoms/Price';
 import { ProductLink } from '../../atoms/ProductLink';
+import { Quantity } from '../Quantity';
 import { useCart } from '../../../context/CartContext';
 import { firestore } from '../../../firebase/firebase';
 import { useAuth } from '../../../context/AuthContext';
@@ -14,41 +15,25 @@ export const CartItem = ({ product, setError }) => {
   const [quantity, setQuantity] = useState(product.quantity);
   const { currentUser } = useAuth();
 
-  const handleQuantity = (e) => {
-    const { value } = e.target;
-
-    if (parseInt(value) > 0) {
-      setQuantity(value);
-      setError('');
-    } else {
-      setError('Incorrect value');
-    }
-  };
-
   const handleSetProduct = () => {
-    if (currentUser) {
-      const newProduct = { ...product, quantity: parseInt(quantity) };
+    const newProduct = { ...product, quantity: parseInt(quantity) };
 
-      firestore.collection(currentUser.uid).doc(product.slug).set(newProduct);
-      dispatch({
-        type: actions.SET_PRODUCT,
-        product: newProduct,
-      });
-      setError('');
-    } else {
-      setError('Failed to set product');
-    }
+    firestore.collection(currentUser.uid).doc(product.slug).set(newProduct);
+    dispatch({
+      type: actions.SET_PRODUCT,
+      product: newProduct,
+    });
+
+    setError('');
   };
 
   const handleDeleteProduct = () => {
-    if (currentUser) {
-      firestore.collection(currentUser.uid).doc(product.slug).delete();
+    firestore.collection(currentUser.uid).doc(product.slug).delete();
 
-      dispatch({
-        type: actions.DELETE_PRODUCT,
-        product,
-      });
-    }
+    dispatch({
+      type: actions.DELETE_PRODUCT,
+      product,
+    });
   };
 
   return (
@@ -60,22 +45,21 @@ export const CartItem = ({ product, setError }) => {
         <Name>
           <ProductLink to={`/product/${product.slug}`}>{product.name}</ProductLink>
         </Name>
-        <QuantityContainer>
+        <SubContainer>
           <PriceContainer>
             <p>cost</p>
             <Price>${round(product.price * product.quantity, 2)}</Price>
           </PriceContainer>
-          <Label htmlFor={`${product.slug}-quantity`}>
-            quantity
-            <QuantityInput min='1' type='number' id={`${product.slug}-quantity`} onChange={handleQuantity} value={quantity} color='gray' />
-          </Label>
-          <Button size='s' onClick={handleSetProduct}>
-            set
-          </Button>
-          <Button size='s' onClick={handleDeleteProduct} ml={10}>
-            delete
-          </Button>
-        </QuantityContainer>
+          <Quantity quantity={quantity} setQuantity={setQuantity} showLabel={false} />
+          <ButttonsContainer>
+            <Button size='s' onClick={handleSetProduct} ml={5}>
+              set
+            </Button>
+            <Button size='s' onClick={handleDeleteProduct} ml={5}>
+              delete
+            </Button>
+          </ButttonsContainer>
+        </SubContainer>
       </div>
     </Container>
   );

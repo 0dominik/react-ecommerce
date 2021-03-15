@@ -3,14 +3,14 @@ import { GlobalStyle } from './theme/globalStyles';
 import { PrivateRoute } from './components/atoms/PrivateRoute';
 import { Navigation } from './components/organisms/Navigation';
 import { Menu } from './components/organisms/Menu';
-import { Home } from './components/pages/Home';
-import { Products } from './components/pages/Products';
-import { Product } from './components/pages/Product';
-import { Cart } from './components/pages/Cart';
-import { Search } from './components/pages/Search';
-import { Login } from './components/pages/Login';
-import { Register } from './components/pages/Register';
-import { NotFound } from './components/pages/NotFound';
+import { Home } from './components/organisms/Home';
+import { Products } from './components/organisms/Products';
+import { Product } from './components/organisms/Product';
+import { Cart } from './components/organisms/Cart';
+import { Search } from './components/organisms/Search';
+import { Login } from './components/organisms/Login';
+import { Register } from './components/organisms/Register';
+import { NotFound } from './components/organisms/NotFound';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 export const App = () => {

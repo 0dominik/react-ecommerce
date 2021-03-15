@@ -17,7 +17,7 @@ export const Nav = styled.nav`
 
 export const ButtonsContainer = styled.div`
   position: absolute;
-  bottom: 25px;
+  bottom: 60px;
   display: flex;
   flex-direction: column;
   justify-content: center;

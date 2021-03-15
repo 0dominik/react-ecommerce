@@ -5,7 +5,7 @@ import { MenuList } from '../../molecules/MenuList';
 import { Nav, ButtonsContainer } from './style';
 import { useOuterClick } from '../../../hooks/useOuterClick';
 import { useAuth } from '../../../context/AuthContext';
-import { useHistory, Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 export const Menu = () => {
   const [isOpen, setIsOpen] = useState(false);

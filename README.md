@@ -2,7 +2,7 @@
 
 ## Overview
 
-This is a ecommerce React app. Template: symu.co
+This is a ecommerce React app. It allows you to browse or search products and add them to cart. Template is from symu.co
 
 ## Technologies
 
@@ -13,15 +13,12 @@ This is a ecommerce React app. Template: symu.co
 - Apollo/GraphQL
 - React Router DOM
 
-## Features
-
-- Cart
-- Searching products
-- Progressive web app (PWA)
-- Authentication
-
 ## Demo
 
-https://condescending-goldberg-c1ce21.netlify.app/
+https://olios-shop.netlify.app
+
+## Sample credentials 
+email: user@user.com\
+password: 123456
 
 ![project image](https://i.imgur.com/VbetyWU.png)

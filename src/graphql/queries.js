@@ -1,4 +1,5 @@
 import { gql } from '@apollo/client';
+import { recommendedNumber, pageLimit } from '../utils/constants';
 
 export const GET_PRODUCT = gql`
   query product($slug: String!) {
@@ -15,7 +16,7 @@ export const GET_PRODUCT = gql`
         url
       }
     }
-    recommended: products(first: 3) {
+    recommended: products(first: ${recommendedNumber}) {
       name
       price
       slug
@@ -29,7 +30,7 @@ export const GET_PRODUCT = gql`
 
 export const GET_PRODUCTS = gql`
   query products($skip: Int = 0, $category: String = "", $orderBy: ProductOrderByInput, $minPrice: Int = 0, $maxPrice: Int = 1000) {
-    products(first: 10, skip: $skip, orderBy: $orderBy, where: { category: { slug_starts_with: $category }, price_gte: $minPrice, price_lte: $maxPrice }) {
+    products(first: ${pageLimit}, skip: $skip, orderBy: $orderBy, where: { category: { slug_starts_with: $category }, price_gte: $minPrice, price_lte: $maxPrice }) {
       name
       price
       slug
@@ -44,7 +45,7 @@ export const GET_PRODUCTS = gql`
 
 export const SEARCH_PRODUCT = gql`
   query products($query: String = "") {
-    products(first: 10, where: { name_contains: $query }) {
+    products(first: ${pageLimit}, where: { name_contains: $query }) {
       name
       price
       slug

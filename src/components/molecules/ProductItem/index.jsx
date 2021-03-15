@@ -1,10 +1,11 @@
 import React from 'react';
-import { Container, Name, Price, Description, Img, Title } from './style';
+import { Container, Name, Description, Img, Title } from './style';
+import { Price } from '../../atoms/Price';
 import { ProductLink } from '../../atoms/ProductLink';
 
-export const ProductItem = ({ product, margin }) => {
+export const ProductItem = ({ product }) => {
   return (
-    <Container margin={margin}>
+    <Container>
       <ProductLink to={`/product/${product.slug}`}>
         <Img src={product.image.url} alt={product.name} isSold={product.isSold} />
       </ProductLink>

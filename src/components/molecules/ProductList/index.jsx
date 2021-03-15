@@ -1,14 +1,15 @@
 import React from 'react';
+import { Alert } from '../../atoms/Alert';
 import { ProductItem } from '../ProductItem';
-import { Heading, Container } from './style';
+import { Container } from './style';
 
-export const Recommended = ({ products }) => {
+export const ProductList = ({ products }) => {
   return (
     <Container>
-      <Heading>recommended</Heading>
       {products.map((product) => (
         <ProductItem key={product.slug} product={product} />
       ))}
+      {products.length === 0 && <Alert type='error'>No products found</Alert>}
     </Container>
   );
 };

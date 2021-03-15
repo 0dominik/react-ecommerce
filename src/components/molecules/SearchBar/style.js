@@ -1,10 +1,11 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
+export const Form = styled.form`
   display: flex;
   flex-direction: column;
   position: relative;
   justify-content: center;
+  margin-bottom: 50px;
 `;
 
 export const StyledInput = styled.input`
@@ -19,7 +20,7 @@ export const StyledInput = styled.input`
   position: relative;
   transition: 0.3s;
   padding-left: 15px;
-  padding-right: 110px;
+  padding-right: 15px;
   background-color: ${({ theme }) => theme.colors.gray};
 
   &:focus {
@@ -29,6 +30,10 @@ export const StyledInput = styled.input`
       transform: translateY(60px);
       opacity: ${({ isLabelVisible }) => (isLabelVisible ? '0' : '1')};
     }
+  }
+
+  ::-webkit-search-cancel-button {
+    -webkit-appearance: none;
   }
 `;
 

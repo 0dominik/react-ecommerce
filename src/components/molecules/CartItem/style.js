@@ -5,7 +5,7 @@ export const Container = styled.article`
   width: min(80vw, 585px);
   background-color: ${({ theme }) => theme.colors.white};
   margin: 15px;
-  padding: 25px 40px;
+  padding: 25px 30px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -31,17 +31,9 @@ export const PriceContainer = styled.div`
   flex-direction: column;
   font-size: 1.4rem;
   font-weight: 700;
-  color: ${({ theme }) => theme.colors.black};
   margin-bottom: -5px;
   text-transform: uppercase;
-`;
-
-export const Price = styled.p`
-  color: ${({ theme }) => theme.colors.primary};
-  font-size: 1.8rem;
-  font-weight: 700;
-  margin-top: 10px;
-  height: 30px;
+  margin-right: 20px;
 `;
 
 export const Img = styled.img`
@@ -54,18 +46,11 @@ export const Img = styled.img`
   }
 `;
 
-export const Label = styled.label`
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  text-transform: uppercase;
-  font-size: 1.4rem;
-  font-weight: 700;
-  margin-left: 30px;
-  margin-right: 10px;
+export const ButttonsContainer = styled.div`
+  padding-top: 20px;
 `;
 
-export const QuantityContainer = styled.div`
+export const SubContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: flex-end;

@@ -37,25 +37,14 @@ export const SubContainer = styled.div`
   flex-wrap: wrap;
 `;
 
-export const Price = styled.p`
-  color: ${({ theme }) => theme.colors.primary};
-  font-size: 2.2rem;
+export const PriceContainer = styled.div`
+  text-transform: uppercase;
+  font-size: 1.3rem;
   font-weight: 700;
-  margin-top: 5px;
+  text-align: center;
 `;
 
 export const QuantityContainer = styled.div`
   display: flex;
   align-items: center;
-`;
-
-export const Label = styled.label`
-  display: flex;
-  text-transform: uppercase;
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: ${({ theme }) => theme.colors.black};
-  flex-direction: column;
-  margin-right: 20px;
-  margin-bottom: 20px;
 `;

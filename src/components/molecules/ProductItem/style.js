@@ -4,7 +4,7 @@ export const Container = styled.article`
   width: 250px;
   height: 370px;
   background-color: ${({ theme }) => theme.colors.white};
-  margin: ${({ margin }) => margin || '15px'};
+  margin: 15px;
   padding: 25px;
   display: flex;
   justify-content: flex-end;
@@ -18,11 +18,6 @@ export const Name = styled.h3`
   font-size: 2.4rem;
   font-weight: normal;
   margin-top: 35px;
-`;
-
-export const Price = styled.p`
-  color: ${({ theme }) => theme.colors.primary};
-  font-weight: 700;
 `;
 
 export const Title = styled.span`
