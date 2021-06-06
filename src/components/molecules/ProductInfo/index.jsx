@@ -46,12 +46,20 @@ export const ProductInfo = ({ product, loading }) => {
         quantity: parseInt(quantity),
       };
 
-      firestore.collection(currentUser.uid).doc(product.slug).set(newProduct);
-      dispatch({
-        type: actions.ADD_PRODUCT,
-        product: newProduct,
-      });
-      setMessage('Product successfully added to cart');
+      firestore
+        .collection(currentUser.uid)
+        .doc(product.slug)
+        .set(newProduct)
+        .then(() => {
+          dispatch({
+            type: actions.ADD_PRODUCT,
+            product: newProduct,
+          });
+          setMessage('Product successfully added to cart');
+        })
+        .catch(() => {
+          setError('failed to add product');
+        });
     } else {
       setError('You have to log in to add product to cart.');
     }

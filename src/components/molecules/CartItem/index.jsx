@@ -11,29 +11,43 @@ import { actions } from '../../../utils/actions';
 import { round } from '../../../utils/helpers';
 
 export const CartItem = ({ product, setError }) => {
-  const [cart, dispatch] = useCart();
+  const [, dispatch] = useCart();
   const [quantity, setQuantity] = useState(product.quantity);
   const { currentUser } = useAuth();
 
   const handleSetProduct = () => {
     const newProduct = { ...product, quantity: parseInt(quantity) };
 
-    firestore.collection(currentUser.uid).doc(product.slug).set(newProduct);
-    dispatch({
-      type: actions.SET_PRODUCT,
-      product: newProduct,
-    });
-
-    setError('');
+    firestore
+      .collection(currentUser.uid)
+      .doc(product.slug)
+      .set(newProduct)
+      .then(() => {
+        dispatch({
+          type: actions.SET_PRODUCT,
+          product: newProduct,
+        });
+        setError('');
+      })
+      .catch(() => {
+        setError('Failed to set product');
+      });
   };
 
   const handleDeleteProduct = () => {
-    firestore.collection(currentUser.uid).doc(product.slug).delete();
-
-    dispatch({
-      type: actions.DELETE_PRODUCT,
-      product,
-    });
+    firestore
+      .collection(currentUser.uid)
+      .doc(product.slug)
+      .delete()
+      .then(() => {
+        dispatch({
+          type: actions.DELETE_PRODUCT,
+          slug: product.slug,
+        });
+      })
+      .catch(() => {
+        setError('Failed to delete product');
+      });
   };
 
   return (

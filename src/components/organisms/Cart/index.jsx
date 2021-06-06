@@ -19,8 +19,8 @@ export const Cart = () => {
 
   const handleDeleteAll = () => {
     if (currentUser) {
-      cart.forEach((el) => {
-        firestore.collection(currentUser.uid).doc(el.slug).delete();
+      cart.forEach((cartItem) => {
+        firestore.collection(currentUser.uid).doc(cartItem.slug).delete();
       });
 
       dispatch({

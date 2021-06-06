@@ -32,7 +32,7 @@ export const StyledHamburger = styled.button`
     content: '';
     width: 20px;
     height: 3px;
-    background-color: blue;
+    background-color: ${({ theme }) => theme.colors.primary};
     border-radius: 25%;
     transition: 0.15s;
   }
